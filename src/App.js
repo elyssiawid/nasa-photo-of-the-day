@@ -22,7 +22,7 @@ function App() {
         "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2019-07-09"
       );
     }
-
+    console.log("pie");
     axios
       .all([dayone(), daytwo(), daythree()])
       .then(res => {
@@ -37,7 +37,7 @@ function App() {
     <div className="App">
       <h1>NASA Photo of the Day</h1>
       <section>
-        <NASAGrid data={data} />
+        <NASAGrid nasaData={data} />
       </section>
     </div>
   );
