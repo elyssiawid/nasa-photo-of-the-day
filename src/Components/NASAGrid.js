@@ -1,13 +1,62 @@
 import React, { useState, useEffect } from "react";
 import NASACard from "./NASACard";
-import axios from "axios";
+import styled from "styled-components";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { UncontrolledCollapse, Button, CardBody, Card } from "reactstrap";
+// import axios from "axios";
 
 function NASAGrid(props) {
   console.log("nasagridprops", props.nasaData);
-  const cards = props.nasaData.map(x => <NASACard />);
-  return <div>Grid</div>;
+  //Turnery Statement
+  // const a = 1;
+  // const b = 2;
+  // a > b ? console.log(true) : console.log(false);
+  // const cards = props.nasaData.map(x => <NASACard cardData={x} />);
+  if (!props.nasaData) {
+    return <h1>"...loading..."</h1>;
+  }
+  return (
+    <div>
+      <Button color="primary" id="toggler" style={{ marginBottom: "1rem" }}>
+        {props.nasaData.title}
+      </Button>
+      <UncontrolledCollapse toggler="#toggler">
+        <Card>
+          <CardBody>
+            <img src={props.nasaData.url} style={{ maxWidth: "700px" }} />
+          </CardBody>
+        </Card>
+      </UncontrolledCollapse>
+      <div className="nasa-card">
+        <ParagraphContainer> Date: {props.nasaData.date}</ParagraphContainer>
+        {/* <ParagraphContainer> Title: {props.nasaData.title}</ParagraphContainer> */}
+        <ParagraphContainer>
+          {/* {" "} */}
+          Explanation: {props.nasaData.explanation}
+        </ParagraphContainer>
+      </div>
+      ;
+    </div>
+  );
 }
 
 export default NASAGrid;
 
-const map1 = array1.map(x => x * 2);
+const ParagraphContainer = styled.p`
+  color: purple;
+`;
+
+const HeaderContainer = styled.p`
+  color: purple;
+`;
+
+export const ButtonContainer = styled.a`
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0.5rem 0;
+  margin: 0.5rem 1rem;
+  width: 11rem;
+  background: transparent;
+  color: darkred;
+  border: 2px solid darkblue;
+`;
