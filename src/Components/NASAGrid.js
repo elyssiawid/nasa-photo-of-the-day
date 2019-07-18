@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import NASACard from "./NASACard";
+import React from "react";
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { UncontrolledCollapse, Button, CardBody, Card } from "reactstrap";
-// import axios from "axios";
 
 function NASAGrid(props) {
   console.log("nasagridprops", props.nasaData);
@@ -23,15 +21,17 @@ function NASAGrid(props) {
       <UncontrolledCollapse toggler="#toggler">
         <Card>
           <CardBody>
-            <img src={props.nasaData.url} style={{ maxWidth: "700px" }} />
+            <img
+              src={props.nasaData.url}
+              style={{ maxWidth: "700px" }}
+              alt="Something"
+            />
           </CardBody>
         </Card>
       </UncontrolledCollapse>
       <div className="nasa-card">
-        <ParagraphContainer> Date: {props.nasaData.date}</ParagraphContainer>
-        {/* <ParagraphContainer> Title: {props.nasaData.title}</ParagraphContainer> */}
+        <ParagraphContainer> Date: {props.nasaData.date}</ParagraphContainer>;
         <ParagraphContainer>
-          {/* {" "} */}
           Explanation: {props.nasaData.explanation}
         </ParagraphContainer>
       </div>
